@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inky's Study Den</title>
+  <meta name="description" content="Lecture notes, past papers and study materials for university students — with a very opinionated black cat keeping track of your progress." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231F1B63'/%3E%3Cpath d='M14 26 L12 8 L28 19 Q32 18 36 19 L52 8 L50 26 Q56 36 48 46 Q32 58 16 46 Q8 36 14 26Z' fill='%230B0A22' stroke='%23F28A2B' stroke-width='2'/%3E%3Ccircle cx='24' cy='32' r='4' fill='%23F8B93C'/%3E%3Ccircle cx='40' cy='32' r='4' fill='%23F8B93C'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600;700&family=Pirata+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#library">Skip to the library</a>
+
+  <!-- Header -->
+  <header class="topbar" id="topbar">
+    <a class="logo" href="#den" aria-label="Inky's Study Den — home">
+      <span class="logo-cat" data-cat="head"></span>
+      <span class="logo-text">Inky's <em>Den</em></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#den" data-spy="den">Den</a>
+      <a href="#library" data-tab="notes" data-spy="library">Notes</a>
+      <a href="#library" data-tab="papers">Past Papers</a>
+      <a href="#library" data-tab="stash">Study Stash</a>
+      <a href="#paws" data-spy="paws">My Paws</a>
+      <a href="#nap" data-spy="nap">Nap Timer</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="trailBtn" aria-pressed="true" title="Toggle paw-print trail"><span data-paw></span></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch day / night" title="Day / night"><span class="theme-ico"></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="den" data-guide="den">
+      <div class="hero-copy">
+        <p class="eyebrow">✦ for sleepy students &amp; curious cats ✦</p>
+        <h1 class="display">Study <span class="cozy">cozy.</span><br><em>Pounce</em> on those <em>exams.</em></h1>
+        <p class="lede">Lecture notes, past papers and a stash of study goodies — all curled up in one purr-fectly organised den. Inky keeps count of every paw-step you take.</p>
+
+        <form class="search" id="heroSearch" role="search">
+          <span class="search-ico" data-paw></span>
+          <label class="sr-only" for="heroQ">Search resources</label>
+          <input id="heroQ" type="search" autocomplete="off" placeholder="Search notes, papers, stash…" />
+          <kbd title="Press / to search">/</kbd>
+          <button class="btn" type="submit">Sniff it out</button>
+        </form>
+
+        <div class="quick" id="quickChips" aria-label="Quick searches">
+          <button type="button" data-q="Data Structures">Data Structures</button>
+          <button type="button" data-q="End Sem 2025">End Sem 2025</button>
+          <button type="button" data-q="cheat sheet">Cheat sheets</button>
+          <button type="button" data-q="Unit 1">Unit 1</button>
+        </div>
+
+        <ul class="stats" id="heroStats">
+          <li><b data-count="notes">0</b><span>lecture notes</span></li>
+          <li><b data-count="papers">0</b><span>past papers</span></li>
+          <li><b data-count="stash">0</b><span>stash goodies</span></li>
+          <li><b data-count="streak">0</b><span>day streak 🔥</span></li>
+        </ul>
+      </div>
+
+      <div class="scene" id="scene">
+        <div class="sun"></div>
+        <div class="orbit"></div>
+        <div class="sticker st1" data-sticker="star"></div>
+        <div class="sticker st2" data-sticker="moon"></div>
+        <div class="sticker st3" data-sticker="butterfly"></div>
+        <div class="sticker st4" data-sticker="fish"></div>
+        <div class="sticker st5" data-sticker="yarn"></div>
+        <div class="sticker st6" data-sticker="heart"></div>
+        <div class="sticker st7" data-sticker="mouse"></div>
+        <div class="sticker st8" data-sticker="star"></div>
+        <div class="scene-cat" id="heroCat" data-cat="scene" role="button" tabindex="0" aria-label="Pet Inky (double-click to make him knock the mug over)"></div>
+        <div class="bubble hero-bubble show" id="heroBubble">Hello, scholar. 🐾</div>
+        <div class="hearts" id="hearts" aria-hidden="true"></div>
+        <p class="hint">pet me · or double-click for chaos</p>
+      </div>
+    </section>
+
+    <!-- ============ LIBRARY ============ -->
+    <section class="library" id="library" data-guide="library">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow small">everything's been sniffed &amp; sorted</p>
+          <h2 class="display">The Library</h2>
+        </div>
+        <div class="tabs" role="tablist" id="tabs" aria-label="Resource type">
+          <button role="tab" data-tab="notes" aria-selected="true"><span>📓</span> Notes <i id="cnt-notes">0</i></button>
+          <button role="tab" data-tab="papers" aria-selected="false"><span>📜</span> Past Papers <i id="cnt-papers">0</i></button>
+          <button role="tab" data-tab="stash" aria-selected="false"><span>🧶</span> Study Stash <i id="cnt-stash">0</i></button>
+        </div>
+      </div>
+
+      <div class="toolbar reveal">
+        <div class="field grow">
+          <label for="q">Search</label>
+          <input id="q" type="search" placeholder="Try “algorithms”, “2024”, “unit 3”…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="courseSel">Course</label>
+          <select id="courseSel"></select>
+        </div>
+        <div class="field">
+          <label for="sortSel">Sort</label>
+          <select id="sortSel">
+            <option value="new">Newest first</option>
+            <option value="az">A → Z</option>
+            <option value="todo">Not done first</option>
+          </select>
+        </div>
+        <div class="switches">
+          <button class="switch" id="savedOnly" aria-pressed="false">♥ Saved</button>
+          <button class="switch" id="hideDone" aria-pressed="false">Hide done</button>
+        </div>
+      </div>
+
+      <div class="pills reveal" id="semPills" role="group" aria-label="Semester"></div>
+
+      <p class="result-line" id="resultLine" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden>
+        <div class="empty-cat" data-cat="peek"></div>
+        <h3 class="display">Nothing here but dust bunnies.</h3>
+        <p>Inky sniffed everywhere. Try a different search or clear a filter.</p>
+        <button class="btn ghost" id="clearFilters">Clear all filters</button>
+      </div>
+      <div class="more"><button class="btn ghost" id="moreBtn" hidden>Show more treats</button></div>
+    </section>
+
+    <!-- ============ MY PAWS ============ -->
+    <section class="paws" id="paws" data-guide="paws">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow small">your progress, in paw-prints</p>
+          <h2 class="display">My Paws</h2>
+        </div>
+        <button class="btn ghost small" id="resetBtn">Reset progress</button>
+      </div>
+
+      <div class="paws-grid">
+        <article class="panel level reveal">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 128 128" class="ring" aria-hidden="true">
+              <circle cx="64" cy="64" r="54" class="ring-bg"/>
+              <circle cx="64" cy="64" r="54" class="ring-fg" id="xpRing" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+            </svg>
+            <div class="ring-cat" data-cat="head"></div>
+          </div>
+          <div class="level-info">
+            <p class="eyebrow small">current rank</p>
+            <h3 class="display" id="lvlName">Kitten</h3>
+            <p class="muted" id="lvlSub">0 XP</p>
+            <div class="bar"><span id="lvlBar"></span></div>
+            <p class="tiny" id="lvlNext"></p>
+          </div>
+        </article>
+
+        <article class="panel streak reveal">
+          <div class="panel-top"><h3>Streak</h3><span class="big-num" id="streakNum">0</span></div>
+          <p class="muted" id="streakSub">Do one thing today to start a streak.</p>
+          <div class="heat" id="heat" aria-label="Last 5 weeks of activity"></div>
+          <p class="tiny legend"><span>less</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><span>more</span></p>
+        </article>
+
+        <article class="panel goal reveal">
+          <div class="panel-top"><h3>Weekly goal</h3><span class="big-num"><span id="goalDone">0</span>/<span id="goalTarget">7</span></span></div>
+          <div class="bar tall"><span id="goalBar"></span></div>
+          <label class="slider"><span class="tiny">Items to finish this week</span>
+            <input type="range" id="goalRange" min="3" max="20" step="1" value="7" />
+          </label>
+          <p class="muted" id="goalSub"></p>
+        </article>
+
+        <article class="panel courses reveal">
+          <div class="panel-top"><h3>Course progress</h3></div>
+          <ul class="course-bars" id="courseBars"></ul>
+        </article>
+
+        <article class="panel badges reveal">
+          <div class="panel-top"><h3>Collar badges</h3><span class="tiny" id="badgeCount"></span></div>
+          <ul class="badge-grid" id="badgeGrid"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ NAP TIMER ============ -->
+    <section class="nap" id="nap" data-guide="nap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="eyebrow small">focus hard, then nap harder</p>
+          <h2 class="display">Nap Timer</h2>
+        </div>
+      </div>
+
+      <div class="nap-grid">
+        <article class="panel timer reveal" id="timerPanel">
+          <div class="timer-cat" id="timerCat"><div data-cat="full"></div><span class="zzz" aria-hidden="true">z<b>z</b><i>z</i></span></div>
+          <div class="timer-body">
+            <div class="modes" id="modes" role="group" aria-label="Timer preset">
+              <button data-f="25" data-b="5" aria-pressed="true">25 / 5</button>
+              <button data-f="15" data-b="3" aria-pressed="false">15 / 3</button>
+              <button data-f="50" data-b="10" aria-pressed="false">50 / 10</button>
+            </div>
+            <p class="phase" id="phase">Ready to focus</p>
+            <div class="clock" id="clock" aria-live="off">25:00</div>
+            <div class="bar"><span id="timerBar"></span></div>
+            <div class="timer-btns">
+              <button class="btn" id="startBtn">Start focus</button>
+              <button class="btn ghost" id="resetTimer">Reset</button>
+            </div>
+            <p class="tiny" id="sessionLine">0 focus sessions so far</p>
+          </div>
+        </article>
+
+        <article class="panel pad reveal">
+          <div class="panel-top"><h3>Sticky scratch pad</h3><span class="tiny">saves as you type</span></div>
+          <textarea id="padText" placeholder="Jot down a formula, a deadline, a tiny victory…" spellcheck="false"></textarea>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-cat" data-cat="peek"></div>
+    <p class="display">Inky's Study Den</p>
+    <p class="muted">Made with ♥ and an unreasonable amount of cat fur. Your progress lives only in this browser.</p>
+    <p class="tiny">psst — try the Konami code.</p>
+  </footer>
+
+  <!-- Guide cat -->
+  <aside class="guide" id="guide" aria-live="polite">
+    <div class="bubble" id="guideBubble">Psst… press <b>/</b> to search.</div>
+    <button class="guide-cat" id="guideCat" aria-label="Ask Inky for a tip"><span data-cat="peek"></span></button>
+  </aside>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <!-- Reader modal -->
+  <dialog id="reader" aria-labelledby="rTitle">
+    <form method="dialog" class="reader-close"><button class="icon-btn" aria-label="Close">✕</button></form>
+    <div class="reader-head">
+      <span class="chip" id="rCourse"></span>
+      <h3 class="display" id="rTitle"></h3>
+      <p class="muted" id="rSub"></p>
+    </div>
+    <dl class="facts" id="rFacts"></dl>
+    <p class="says"><span class="says-cat" data-cat="head"></span><span id="rSays"></span></p>
+    <div class="reader-actions">
+      <a class="btn" id="rOpen" href="#" target="_blank" rel="noopener">Open resource</a>
+      <button class="btn ghost" id="rDone">Mark as done</button>
+      <button class="btn ghost" id="rSave">♥ Save</button>
+    </div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/cat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
